@@ -1,6 +1,6 @@
-# FontAwesome5
+# FontAwesome6
 
-[![Build Status](https://dev.azure.com/codinion/FontAwesome5/_apis/build/status/MartinTopfstedt.FontAwesome5?branchName=master)](https://dev.azure.com/codinion/FontAwesome5/_build/latest?definitionId=11&branchName=master)
+[![Build Status](https://dev.azure.com/codinion/FontAwesome6/_apis/build/status/MartinTopfstedt.FontAwesome6?branchName=master)](https://dev.azure.com/codinion/FontAwesome6/_build/latest?definitionId=11&branchName=master)
 
 WPF (.Net and .Net Core) and UWP controls for the iconic SVG, font, and CSS toolkit Font Awesome 5.
 
@@ -12,9 +12,9 @@ Font Awesome: https://github.com/FortAwesome/Font-Awesome
 
 #### Installation
 
-```Install-Package FontAwesome5```
+```Install-Package FontAwesome6```
 
-https://www.nuget.org/packages/FontAwesome5
+https://www.nuget.org/packages/FontAwesome6
 
 #### Usage XAML
 
@@ -27,11 +27,11 @@ https://github.com/charri/Font-Awesome-WPF/blob/master/README-WPF.md#usage-xaml
 The SvgAwesome can be used like the ImageAwesome.
 
 ``` 
-<Window x:Class="FontAwesome5.WPF.Example"
+<Window x:Class="FontAwesome6.WPF.Example"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
-        Title="FontAwesome5.WPF.Example" Height="300" Width="300">
+        Title="FontAwesome6.WPF.Example" Height="300" Width="300">
     <Grid  Margin="20">
         <fa5:SvgAwesome Icon="Solid_Flag" VerticalAlignment="Center" HorizontalAlignment="Center" />
     </Grid>
@@ -50,11 +50,11 @@ Gets the Label/Name of a EFontAwesomeIcon. The converter parameter can contain a
 
 Example:
 ```
-<Window x:Class="FontAwesome5.WPF.Example"
+<Window x:Class="FontAwesome6.WPF.Example"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
-        Title="FontAwesome5.WPF.Example" Height="300" Width="300">
+        Title="FontAwesome6.WPF.Example" Height="300" Width="300">
     <Window.Resources>
         <fa5:LabelConverter x:Key="LabelConverter"/>
     </Window.Resources>
@@ -71,11 +71,11 @@ Gets the EFontAwesomeStyle of a EFontAwesomeIcon.
 
 Example:
 ```
-<Window x:Class="FontAwesome5.WPF.Example"
+<Window x:Class="FontAwesome6.WPF.Example"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
-        Title="FontAwesome5.WPF.Example" Height="300" Width="300">
+        Title="FontAwesome6.WPF.Example" Height="300" Width="300">
     <Window.Resources>
         <fa5:StyleConverter x:Key="StyleConverter"/>
     </Window.Resources>

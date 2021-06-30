@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 #endif
 
-namespace FontAwesome5.Extensions
+namespace FontAwesome6.Extensions
 {
     /// <summary>
     /// Control extensions

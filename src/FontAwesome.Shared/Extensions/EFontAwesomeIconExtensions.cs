@@ -1,10 +1,10 @@
-﻿using FontAwesome5.Extensions;
+﻿using FontAwesome6.Extensions;
 #if WINDOWS_UWP
 using Windows.UI.Xaml.Media;
 #else
 using System.Windows.Media;
 #endif
-namespace FontAwesome5.Extensions
+namespace FontAwesome6.Extensions
 {
     /// <summary>
     /// EFontAwesomeIcon extensions
@@ -21,7 +21,7 @@ namespace FontAwesome5.Extensions
             {
                 case EFontAwesomeStyle.Regular: return Fonts.RegularTypeface;
                 case EFontAwesomeStyle.Solid: return Fonts.SolidTypeface;
-                case EFontAwesomeStyle.Brands: return Fonts.BrandsTypeface;
+                case EFontAwesomeStyle.Light: return Fonts.LightTypeface;
             }
 
             return Fonts.RegularTypeface;
@@ -36,7 +36,7 @@ namespace FontAwesome5.Extensions
             {
                 case EFontAwesomeStyle.Regular: return Fonts.RegularFontFamily;
                 case EFontAwesomeStyle.Solid: return Fonts.SolidFontFamily;
-                case EFontAwesomeStyle.Brands: return Fonts.BrandsFontFamily;   
+                case EFontAwesomeStyle.Light: return Fonts.LightFontFamily;
             }
 
             return Fonts.RegularFontFamily;

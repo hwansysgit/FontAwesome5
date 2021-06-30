@@ -8,13 +8,13 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FontAwesome5.Generator
+namespace FontAwesome6.Generator
 {
     public enum EStyles
     {
         Solid,
         Regular,
-        Brands
+        Light
     }
 
     public class FontAwesomeManager
@@ -83,7 +83,7 @@ namespace FontAwesome5.Generator
             public string[] viewBox { get; set; }
             public int width { get; set; }
             public int height { get; set; }
-            public string path { get; set; }
+            public object path { get; set; }
         }
     }
 }

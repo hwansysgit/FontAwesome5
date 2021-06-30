@@ -289,3 +289,5 @@ __pycache__/
 
 # Excludes
 !/bin/**/*
+/Font-Awesome6/metadata
+/Font-Awesome6/otfs

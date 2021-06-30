@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <Company>Codinion</Company>
+    <Authors>Martin Topfstedt</Authors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutDir)\FontAwesome6.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>../FontAwesome6.NET/Key.snk</AssemblyOriginatorKeyFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright © Codinion 2018</Copyright>
+    <AssemblyName>FontAwesome6</AssemblyName>
+    <RootNamespace>FontAwesome6</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.4'">
+    <PackageReference Include="System.Reflection.TypeExtensions">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

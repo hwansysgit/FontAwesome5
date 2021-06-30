@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontAwesome5
+namespace FontAwesome6
 {
     /// <summary>
     /// Represents a rotatable control

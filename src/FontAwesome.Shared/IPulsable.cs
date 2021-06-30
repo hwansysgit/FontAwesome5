@@ -1,4 +1,4 @@
-﻿namespace FontAwesome5
+﻿namespace FontAwesome6
 {
     /// <summary>
     /// Represents a control that can have the pulse animation

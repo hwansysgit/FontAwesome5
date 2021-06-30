@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontAwesome5.Generator
+namespace FontAwesome6.Generator
 {
     class Program
     {
@@ -19,8 +20,8 @@ namespace FontAwesome5.Generator
 
         static void Generate(string inputDirectory)
         {
-            var outputFile = Path.Combine(inputDirectory, @"src\FontAwesome5\EFontAwesomeIcon.cs");
-            var configFile = Path.Combine(inputDirectory, @"Font-Awesome\metadata\icons.json");
+            var outputFile = Path.Combine(inputDirectory, @"src\FontAwesome6\EFontAwesomeIcon.cs");
+            var configFile = Path.Combine(inputDirectory, @"Font-Awesome6\metadata\icons.json");
 
             var fa = new FontAwesomeManager(configFile);
 
@@ -35,7 +36,7 @@ namespace FontAwesome5.Generator
 
             WriteLine("using System;");
             WriteLine("using System.ComponentModel;");
-            WriteLine("namespace FontAwesome5");
+            WriteLine("namespace FontAwesome6");
             WriteLine("{");
             PushIndent("\t");
 
@@ -52,7 +53,7 @@ namespace FontAwesome5.Generator
             WriteLine("");
             foreach (EStyles style in Enum.GetValues(typeof(EStyles)))
             {
-                WriteSummary("FontAwesome5 {0} Style", style);
+                WriteSummary("FontAwesome6 {0} Style", style);
                 WriteLine("{0},", style);
                 WriteLine("");
             }
@@ -60,7 +61,7 @@ namespace FontAwesome5.Generator
             WriteLine("}");
 
             WriteLine("");
-            WriteLine("///<summary>FontAwesome5 Icons</summary>");
+            WriteLine("///<summary>FontAwesome6 Icons</summary>");
             WriteLine("public enum EFontAwesomeIcon");
             WriteLine("{");
             PushIndent("\t");
@@ -73,7 +74,7 @@ namespace FontAwesome5.Generator
                 foreach (var kvp in fa.Icons.Where(i => i.Value.styles.Contains(style.ToString().ToLower())))
                 {
                     WriteSummary(kvp.Value.label);
-                    WriteLine("///<see href=\"http://fontawesome.com/icons/{0}?style={1}\" />", kvp.Key, style.ToString().ToLower());   
+                    WriteLine("///<see href=\"https://fontawesome.com/v6.0/icons/{0}?s={1}\" />", kvp.Key, style.ToString().ToLower());   
                     WriteLine("{0}_{1},", style, fa.Convert(kvp.Key));
                     WriteLine("");
                 }
@@ -100,7 +101,7 @@ namespace FontAwesome5.Generator
 
             WriteLine("using System;");
             WriteLine("using System.Collections.Generic;");
-            WriteLine("namespace FontAwesome5");
+            WriteLine("namespace FontAwesome6");
             WriteLine("{");
             PushIndent("\t");
 
@@ -117,9 +118,21 @@ namespace FontAwesome5.Generator
                    
                     if (kvp.Value.svg.TryGetValue(style.ToString().ToLower(), out var svgInfo))
                     {
-                        WriteLine("{{EFontAwesomeIcon.{0}_{1}, new FontAwesomeInformation(\"{2}\", EFontAwesomeStyle.{0}, \"{3}\", new FontAwesomeSvgInformation(\"{4}\", {5}, {6}))}},",
-                        style, fa.Convert(kvp.Key), kvp.Value.label, char.ConvertFromUtf32(Convert.ToInt32("0x" + kvp.Value.unicode, 16)),
-                        svgInfo.path, svgInfo.width, svgInfo.height);
+                        string path = null;
+
+                        if (svgInfo.path is string)
+                            path = svgInfo.path.ToString();
+                        else
+                        {
+                            path = (svgInfo.path as JArray)[0].ToString();
+                        }
+
+                        if(kvp.Value.label.ToLower() == "ditto" || kvp.Value.label.ToLower() == "slash back")
+                            WriteLine("{{EFontAwesomeIcon.{0}_{1}, new FontAwesomeInformation(\"{2}\", EFontAwesomeStyle.{0}, \"\\{3}\", new FontAwesomeSvgInformation(\"{4}\", {5}, {6}))}},",
+                        style, fa.Convert(kvp.Key), kvp.Value.label, char.ConvertFromUtf32(Convert.ToInt32("0x" + kvp.Value.unicode, 16)), path, svgInfo.width, svgInfo.height);
+                        else
+                            WriteLine("{{EFontAwesomeIcon.{0}_{1}, new FontAwesomeInformation(\"{2}\", EFontAwesomeStyle.{0}, \"{3}\", new FontAwesomeSvgInformation(\"{4}\", {5}, {6}))}},",
+                        style, fa.Convert(kvp.Key), kvp.Value.label, char.ConvertFromUtf32(Convert.ToInt32("0x" + kvp.Value.unicode, 16)), path, svgInfo.width, svgInfo.height);
                     }
                     else
                     {
@@ -178,7 +191,7 @@ namespace FontAwesome5.Generator
             PopIndent();
             WriteLine("}");
 
-            outputFile = Path.Combine(inputDirectory, @"src\FontAwesome5\FontAwesomeInternal.cs");
+            outputFile = Path.Combine(inputDirectory, @"src\FontAwesome6\FontAwesomeInternal.cs");
             File.WriteAllText(outputFile, _content.ToString());
         }
 
